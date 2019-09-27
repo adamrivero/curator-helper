@@ -1,0 +1,43 @@
+﻿<Page x:Class="CourseWork.Pages.ProgressPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      Height="579" Width="1000"
+      Title="ProgressPage">
+
+    <Grid>
+        <DataGrid Name="ProgressGrid" CanUserAddRows="False" HorizontalAlignment="Left" Height="579" VerticalAlignment="Top" Width="1000" AutoGenerateColumns="False" Margin="0,0,-200,-129" Loaded="ProgressGrid_Loaded" Unloaded="ProgressGrid_Unloaded">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код&#13;студента" Binding="{Binding Path=ID}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding Path=name}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Часов&#13;по расписанию" Binding="{Binding Path=allhours}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Всего&#13;пропусков" Binding="{Binding Path=losthours}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="По уважительной&#13;причине" Binding="{Binding Path=reason}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="%&#13;пропусков" Binding="{Binding Path=percent}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Path=group_}" ></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock>Действия</TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="btnSave" Width="50" Click="BtnSave_Click" BorderBrush="#FFA4DA31" Background="#FFA4DA31">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="Edit" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

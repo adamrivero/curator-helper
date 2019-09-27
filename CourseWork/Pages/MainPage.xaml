@@ -1,0 +1,64 @@
+﻿<Page x:Class="CourseWork.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      Title="MainPage" Height="579" Width="1000" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <Grid>
+        <Label Content="Группа" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <ComboBox Name="cmbGroupMain" HorizontalAlignment="Left" VerticalAlignment="Top" Width="142" Margin="53,10,0,0" SelectionChanged="CmbGroupMain_SelectionChanged"/>
+        <Label Content="ФИО" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,10,0,0"/>
+        <TextBox Name="tbNameMain" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Margin="242,15,0,0"/>
+        <Button Content="Найти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="38,136,0,0"/>
+        <DataGrid Name="StudentGrid" CanUserAddRows="False" HorizontalAlignment="Left" Height="533" VerticalAlignment="Top" Width="1000" AutoGenerateColumns="False" Margin="0,46,0,0" CellEditEnding="StudentGrid_CellEditEnding">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код&#13;студента" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding Path=name, UpdateSourceTrigger=PropertyChanged}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс" Binding="{Binding Path=course, UpdateSourceTrigger=PropertyChanged}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Факультет" Binding="{Binding Path=faculty, UpdateSourceTrigger=PropertyChanged}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Специальность" Binding="{Binding Path=spec, UpdateSourceTrigger=PropertyChanged}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Место&#13;проживания" Binding="{Binding Path=live, UpdateSourceTrigger=PropertyChanged}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер&#13;мобильного" Binding="{Binding Path=number, UpdateSourceTrigger=PropertyChanged}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Path=group_, UpdateSourceTrigger=PropertyChanged}" ></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock>Действия</TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="btnDelete" Width="50" Click="BtnDelete_Click" BorderBrush="#FFEE4520" Background="#FFEE4520">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="Delete" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Margin="389,10,512,541" Background="#FF5370BD" BorderBrush="#FF5370BD" Name="btnSearch" Click="BtnReport_Click" Height="Auto">
+            <Grid Width="74">
+                <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Center" Text="Найти" FontFamily="Champagne &amp; Limousines"/>
+            </Grid>
+        </Button>
+        <Button Margin="530,10,318,541" Background="#FF5370BD" BorderBrush="#FF5370BD" Name="btnShowAll" Height="Auto" Click="BtnShowAll_Click">
+            <Grid Width="74">
+                <materialDesign:PackIcon Kind="Show" VerticalAlignment="Center" Margin="-32,0,0,1"/>
+                <TextBlock HorizontalAlignment="Center" Text="Отобразить всех" FontFamily="Champagne &amp; Limousines" RenderTransformOrigin="1.15,0.647" Margin="-10,0,-26,0"/>
+            </Grid>
+        </Button>
+        <Grid Name="NoticeGrid" Background="#FFEAEA4E" Margin="0,552,0,0" Visibility="Hidden" Opacity="0.8" x:FieldModifier="public">
+            <TextBlock x:Name="NoticeText" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" Height="27" Margin="0,2,0,-2" x:FieldModifier="public"/>
+        </Grid>
+    </Grid>
+</Page>
